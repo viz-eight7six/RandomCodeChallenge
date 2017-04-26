@@ -41,7 +41,7 @@ class RandomUnify {
 // #
 // # - An RSA key pair. (100 points)
   lcm(x, y){
-    Math.abs((x * y) / this.gcd_two_numbers(x, y));
+    Math.abs((x * y) / this.gcd(x, y));
 }
 
   gcd(x, y) {
