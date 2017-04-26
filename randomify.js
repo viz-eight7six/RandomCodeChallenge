@@ -5,10 +5,12 @@ const maths = require('math');
 let random = new RandomOrg({ apiKey: 'b8a7f51a-ad52-4121-ad82-70b2440ace8f' });
 class RandomUnify {
 
-    // random.generateIntegers({ min: 1, max: 99, n: 2 })
-    // .then(function(result) {
-    //   return(result.random.data); // [55, 3]
-    // });
+  randomNum(max, n) {
+    random.generateIntegers({ min: 1, max: max, n: n })
+    .then(function(result) {
+      return(result.random.data);
+    });
+  }
 
 
 // # - An RGB bitmap picture of 128x128 pixels. (70 points)
@@ -46,24 +48,24 @@ class RandomUnify {
     return x;
   }
 
-    mod = (a, b) => {
-    i = 0
+    mod(a, b){
+    let i = 0;
     while (i < b){
       if (a*i%b === 1){
-        return i
+        return i;
       }
-      i += 1
+      i += 1;
     }
   }
 
   rsaPair(){
-    let arr = random.generateIntegers({ min: 1, max: 99, n: 2 });
+    let arr = this.randomNum(99, 3);
     let p = arr[0];
     let q = arr[1];
     let n = p*q;
     let toi = maths.lcm(p-1,q-1);
-    let e = random.generateIntegers({ min: 1, max: n, n: 1 })
-    let d = mod(e, toi);
+    let e = arr[2];
+    let d = this.mod(e, toi);
     let pub = [n, e];
     let priv = [n, d];
     return [pub, priv];
