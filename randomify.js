@@ -1,6 +1,4 @@
 const RandomOrg = require('random-org');
-const maths = require('math');
-
 
 let random = new RandomOrg({ apiKey: 'b8a7f51a-ad52-4121-ad82-70b2440ace8f' });
 class RandomUnify {
@@ -18,7 +16,6 @@ class RandomUnify {
   bitmap(){
     let width = 128;
     let height = 128;
-
   }
 
   // render(){
@@ -63,7 +60,7 @@ class RandomUnify {
     let p = arr[0];
     let q = arr[1];
     let n = p*q;
-    let toi = maths.lcm(p-1,q-1);
+    let toi = this.lcm(p-1,q-1);
     let e = arr[2];
     let d = this.mod(e, toi);
     let pub = [n, e];
