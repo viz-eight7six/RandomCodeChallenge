@@ -1,14 +1,24 @@
-const RandomOrg = require('random-org');
-
-let random = new RandomOrg({ apiKey: 'b8a7f51a-ad52-4121-ad82-70b2440ace8f' });
 class RandomUnify {
 
   randomNum(max, n) {
-    random.generateIntegers({ min: 1, max: max, n: n })
-    .then(function(result) {
+    fetch("https://api.random.org/json-rpc/1/invoke",
+    {
+    "jsonrpc": "2.0",
+    "method": "generateIntegers",
+    "params": {
+        "apiKey": "b8a7f51a-ad52-4121-ad82-70b2440ace8f",
+        "n": n,
+        "min": 1,
+        "max": max,
+        "replacement": false,
+        "base": 10
+    },
+    "id": 18238
+  }).then(function(result) {
       return(result.random.data);
     });
   }
+
 
 
 // # - An RGB bitmap picture of 128x128 pixels. (70 points)
